@@ -1,9 +1,6 @@
 from my_package import utils
 from my_module import my_function_in_module
 
-print("This is the main script.")
-my_function_in_module()
-utils.my_function_in_package()
 
 def entry_function(*args, **kwargs):
     print("This is the entry function.")
@@ -14,3 +11,7 @@ def entry_function(*args, **kwargs):
     my_function_in_module()
     utils.my_function_in_package()
 
+if __name__ == "__main__":
+    print("This is the main script.")
+    my_function_in_module()
+    utils.my_function_in_package()
