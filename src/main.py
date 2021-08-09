@@ -7,10 +7,10 @@ from my_module import my_function_in_module
 
 def write_output():
     if "OUTPUT_DIR" in os.environ:
-        filename = os.path.join(
+        filename = os.path.abspath(os.path.expanduser(os.path.join(
             os.environ.get("OUTPUT_DIR"),
             datetime.datetime.now().strftime("%Y%m%d_%H%M%s.txt")
-        )
+        )))
         print(f"Writing {filename}...")
         with open(filename, "w") as f:
             f.write(filename)
