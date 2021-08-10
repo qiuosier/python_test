@@ -19,7 +19,7 @@ def write_output():
 
 
 def entry_function(*args, **kwargs):
-    print("This is the entry function.")
+    print("This is the entry function in develop branch.")
     print("Arguments:")
     print(args)
     for k, v in kwargs.items():
@@ -29,7 +29,7 @@ def entry_function(*args, **kwargs):
     write_output()
 
 if __name__ == "__main__":
-    print("This is the main script.")
+    print("This is the main script in develop branch.")
     my_function_in_module()
     utils.my_function_in_package()
     write_output()
