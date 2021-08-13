@@ -21,9 +21,10 @@ def write_output():
 def entry_function(*args, **kwargs):
     print("This is the entry function.")
     print("Arguments:")
-    print(args)
+    for arg in args:
+        print(f"{str(arg)} ({type(arg)})")
     for k, v in kwargs.items():
-        print(f"{k}={v}")
+        print(f"{k}={str(v)} ({type(v)})")
     my_function_in_module()
     utils.my_function_in_package()
     write_output()
