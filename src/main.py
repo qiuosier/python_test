@@ -6,16 +6,16 @@ from my_module import my_function_in_module
 
 
 def write_output():
-    if "OUTPUT_DIR" in os.environ:
-        output_dir = os.path.abspath(os.path.expanduser(os.environ.get("OUTPUT_DIR")))
-        os.makedirs(output_dir, exist_ok=True)
-        filename = os.path.join(
-            output_dir,
-            datetime.datetime.now().strftime("%Y%m%d_%H%M%s.txt")
-        )
-        print(f"Writing {filename}...")
-        with open(filename, "w") as f:
-            f.write(filename)
+    output_dir = os.environ.get("OUTPUT_DIR", ".")
+    output_dir = os.path.abspath(os.path.expanduser(output_dir))
+    os.makedirs(output_dir, exist_ok=True)
+    filename = os.path.join(
+        output_dir,
+        datetime.datetime.now().strftime("%Y%m%d_%H%M%s.txt")
+    )
+    print(f"Writing {filename}...")
+    with open(filename, "w") as f:
+        f.write(filename)
 
 
 def entry_function(*args, **kwargs):
