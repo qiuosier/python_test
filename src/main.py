@@ -1,5 +1,6 @@
 import datetime
 import os
+import sys
 
 from my_package import utils
 from my_module import my_function_in_module
@@ -31,6 +32,8 @@ def entry_function(*args, **kwargs):
 
 if __name__ == "__main__":
     print("This is the main script.")
+    if len(sys.argv) > 1:
+        print(sys.argv[1:])
     my_function_in_module()
     utils.my_function_in_package()
     write_output()
