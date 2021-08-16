@@ -6,7 +6,7 @@ from my_module import my_function_in_module
 
 
 def write_output():
-    output_dir = os.environ.get("OUTPUT_DIR", ".")
+    output_dir = os.environ.get("OUTPUT_DIR", "./outputs")
     output_dir = os.path.abspath(os.path.expanduser(output_dir))
     os.makedirs(output_dir, exist_ok=True)
     filename = os.path.join(
