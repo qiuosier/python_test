@@ -1,0 +1,45 @@
+kind: distributed
+apiVersion: v1.0
+spec:
+  name: PyTorch-Distributed-Git
+  infrastructure:
+    kind: infrastructure
+    type: dataScienceJob
+    apiVersion: v1.0
+    spec:
+      projectId: <>
+      compartmentId:
+      displayName: PyTorch-Distributed-Git
+      logGroupId: <>
+      logId: <>
+      subnetId: <>
+      shapeName: VM.GPU2.1
+      blockStorageSize: 50
+  cluster:
+    kind: PYTORCH
+    apiVersion: v1.0
+    spec:
+      image: <>
+      workDir: <>
+      config:
+        env:
+          - name: NCCL_ASYNC_ERROR_HANDLING
+            value: '1'
+      main:
+        name: PyTorch-Distributed-Git-main
+        replicas: 1
+      worker:
+        name: PyTorch-Distributed-Git-worker
+        replicas: 1
+  runtime:
+    kind: runtime
+    apiVersion: v1.0
+    spec:
+      type: "git"
+      uri: "https://github.com/qiuosier/python_test.git"
+      entryPoint: "pytorch/cifar10_distributed.py"
+      args:
+        - --data-dir
+        - /home/datascience/data
+        - --output-dir
+        - /home/datascience/outputs

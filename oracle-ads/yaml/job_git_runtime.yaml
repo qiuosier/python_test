@@ -1,0 +1,26 @@
+kind: job
+spec:
+  infrastructure:
+    kind: infrastructure
+    type: dataScienceJob
+    spec:
+      logGroupId: <log_group_ocid>
+      logId: <log_ocid>
+      compartmentId: <compartment_ocid>
+      projectId: <project_ocid>
+      subnetId: <subnet_ocid>
+      shapeName: VM.Standard2.1
+      blockStorageSize: 50
+  name: git_example
+  runtime:
+    kind: runtime
+    type: gitPython
+    spec:
+      entrypoint: beginner_source/examples_nn/polynomial_nn.py
+      url: https://github.com/pytorch/tutorials.git
+      conda:
+        slug: pytorch19_p37_gpu_v1
+        type: service
+      env:
+        - name: GREETINGS
+          value: Welcome to OCI Data Science
