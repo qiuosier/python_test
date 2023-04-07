@@ -7,7 +7,7 @@ jobs:
     steps:
       - run: export COLOR=green
       - run: export PERCENT=$(( $RANDOM % 50 + 50 ))  # Generate a random number as example.
-      - run: export SVG=$(curl "https://img.shields.io/badge/coverage-$PERCENT%25-$COLOR")
+      - run: echo "SVG=$(curl 'https://img.shields.io/badge/coverage-$PERCENT%25-$COLOR')" >> $GITHUB_ENV
       - uses: actions/github-script@v6
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
