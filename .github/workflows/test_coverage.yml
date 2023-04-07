@@ -2,10 +2,8 @@ name: Test Coverage
 on:
   pull_request:
 jobs:
-  label_issues:
+  comment:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
     steps:
       - uses: actions/github-script@v6
         with:
@@ -15,5 +13,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '🫣 Coverage: 77%'
+              body: '👋 Thanks for reporting!'
             })
