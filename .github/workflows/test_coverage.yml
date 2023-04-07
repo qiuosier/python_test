@@ -5,6 +5,9 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
+      - run: export COLOR=green
+      - run: export PERCENT=$(( $RANDOM % 50 + 50 ))  # Generate a random number as example.
+      - run: export SVG=$(curl "https://img.shields.io/badge/coverage-$PERCENT%25-$COLOR")
       - uses: actions/github-script@v6
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
@@ -13,5 +16,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '👋 Coverage: 77%'
+              body: '${{ env.SVG }}'
             })
