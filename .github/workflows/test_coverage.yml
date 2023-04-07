@@ -1,21 +1,17 @@
 name: Test Coverage
 on:
-  issues:
-    types:
-      - reopened
-      - opened
+  pull_request:
 jobs:
-  label_issues:
+  comment:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
     steps:
       - uses: actions/github-script@v6
         with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            github.rest.issues.addLabels({
+            github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              labels: ["Coverage: 77%"]
+              body: '👋 Thanks for reporting!'
             })
